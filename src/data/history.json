@@ -1,0 +1,19 @@
+[
+    {
+      "role": "software developer Intern",
+      "organisation": "startup",
+      "startDate": "Oct, 2023",
+      "endDate": "present",
+      "experiences": ["Designed and implemented features", "Built a set of Restful APIs"],
+      "imageSrc": "history/jobster.png"
+    },
+    {
+      "role": "web developer",
+      "organisation": "University of Toronto",
+      "startDate": "Sept, 2022",
+      "endDate": "Arpi, 2023",
+      "experiences": ["Worked on Education platform", "improved query performance by 20%"],
+      "imageSrc": "history/uoft.png"
+    }
+
+  ]
