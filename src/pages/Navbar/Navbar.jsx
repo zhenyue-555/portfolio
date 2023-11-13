@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-// import styles from './Navbar.module.css';
 import {getImageUrl} from "../../utils";
-import { Link } from "react-router-dom";
 
 export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -17,9 +15,10 @@ export const Navbar = () => {
                                                     alt="menu-button" 
                                                     onClick={() => setMenuOpen(!menuOpen)}
                                                     />
-                <ul className={`menuItems ${menuOpen && styles.menuOpen}` }
+                {/* <ul className={`menuItems ${menuOpen && menu-Open}` } */}
+                <ul className={`menuItems ${menuOpen ? "menu-Open" : ""}`}
+
                 onClick={() => setMenuOpen(false)}>
-                {/* <ul className={`menuItems ${menuOpen ? styles.menuOpen : ''}`} onClick={() => setMenuOpen(false)}> */}
 
                     <li>
                         <a href="#about">About</a>

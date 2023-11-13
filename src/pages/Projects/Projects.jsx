@@ -6,11 +6,13 @@ import { ProjectCard } from "./ProjectCard";
 export const Projects = () => {
     return (
         <section className="projects--section" id="projects">
+        <div>
         <h2 className="projects--title">Projects</h2>
         <div className="projects">
             {projects.map((project, id) => {
                     return <ProjectCard project={project} key={id} />;
                 })}
+        </div>
         </div>
         </section>
     );
