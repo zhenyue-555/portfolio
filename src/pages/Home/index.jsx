@@ -4,11 +4,13 @@ import { Experience } from '../Experience/Experience';
 import { Hero } from '../Hero/Hero';
 import { Projects } from '../Projects/Projects';
 import { Footer } from '../Footer/Footer';
+import { Navbar } from '../Navbar/Navbar';
 
 
 export default function Home() {
     return (
        <>
+       <Navbar />
        <Hero />
        <About />
        <Experience />

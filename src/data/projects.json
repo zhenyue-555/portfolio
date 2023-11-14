@@ -1,6 +1,6 @@
 [
     {
-      "title": "E-Commerce Application ",
+      "title": "E-Commerce-Application",
       "imageSrc": "projects/project.png",
       "description": "Designed and developed an end-to-end E-commerce application using the MERN stack.",
       "skills": ["React", "Express", "Node"],
