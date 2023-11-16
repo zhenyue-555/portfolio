@@ -1,7 +1,6 @@
 import React from "react";
-import skills from "../../data/skills.json";
 import { getImageUrl } from "../../utils";
-import history from "../../data/history.json";
+import {history, skills} from "../../data/moment.json";
 import "./Experience.scss";
 
 export const Experience = () => {

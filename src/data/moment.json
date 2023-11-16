@@ -1,0 +1,95 @@
+{
+    "skills": [
+        {
+            "title": "HTML",
+            "imageSrc": "skills/html.png"
+        },
+        {
+            "title": "CSS",
+            "imageSrc": "skills/css.png"
+        },
+        {
+            "title": "React",
+            "imageSrc": "skills/react.png"
+        },
+        {
+            "title": "Node",
+            "imageSrc": "skills/node.png"
+        },
+        {
+            "title": "MongoDB",
+            "imageSrc": "skills/mongodb.png"
+        },
+        {
+            "title": "Figma",
+            "imageSrc": "skills/figma.png"
+        }
+    ],
+    "projects": [
+        {
+            "title": "E-Commerce-Application",
+            "imageSrc": "projects/project.png",
+            "description": "Designed and developed an end-to-end E-commerce application using the MERN stack.",
+            "skills": [
+                "React",
+                "Express",
+                "Node"
+            ],
+            "demo": "https://www.youtube.com/watch?v=eH0JqqH5bBw",
+            "github": "https://github.com/zhenyue-555/shoppingplatform",
+            "details": ""
+        },
+        {
+            "title": "My portfolio",
+            "imageSrc": "projects/project.png",
+            "description": "This is a project made to build a Responsive Portfolio Website from Scratch",
+            "skills": [
+                "React",
+                "Express",
+                "Node",
+                "CSS",
+                "Figma"
+            ],
+            "demo": "https://zhenyueyu-portfolio.netlify.app/",
+            "github": "https://github.com/zhenyue-555/portfolio",
+            "details": ""
+        },
+        {
+            "title": "Project C",
+            "imageSrc": "projects/project.png",
+            "description": "This is a project made to learn the latest languages by building an app.",
+            "skills": [
+                "React",
+                "Express",
+                "Node"
+            ],
+            "demo": "https://www.example.com",
+            "github": "https://www.github.com",
+            "details": ""
+        }
+    ],
+    "history": [
+        {
+            "role": "software developer Intern",
+            "organisation": "startup",
+            "startDate": "Sep, 2023",
+            "endDate": "present",
+            "experiences": [
+                "Designed and implemented features",
+                "Built a set of Restful APIs"
+            ],
+            "imageSrc": "history/jobster.png"
+        },
+        {
+            "role": "web developer",
+            "organisation": "University of Toronto",
+            "startDate": "Sep, 2022",
+            "endDate": "Apr, 2023",
+            "experiences": [
+                "Worked on Education platform",
+                "improved query performance by 20%"
+            ],
+            "imageSrc": "history/uoft.png"
+        }
+    ]
+}
