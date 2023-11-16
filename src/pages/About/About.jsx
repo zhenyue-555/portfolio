@@ -1,6 +1,5 @@
 import React from "react";
-
-// import styles from "./About.module.css";
+import "./About.scss";
 import { getImageUrl } from "../../utils";
 
 export const About = () => {
