@@ -1,0 +1,98 @@
+@import './global.scss';
+
+@mixin blur($position: absolute, $width: 50vw, $height: 50vw, $min-width: 350px, $top: -128px, $left: -10vw, $border-radius: 764px, $background: rgba(25, 55, 109, 0.7), $filter: blur(100px), $z-index: 0) {
+    position: $position;
+    width: $width;
+    height: $height;
+    min-width: $min-width;
+    top: $top;
+    left: $left;
+    border-radius: $border-radius;
+    background: $background;
+    filter: $filter;
+    z-index: $z-index;
+}
+
+.hero--section {
+    position: relative;
+    @include flexbox(null, space-between, center);
+    margin-top: 49px;
+    z-index: 1;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.hero--content {
+    @include flexbox(column, null, flex-start);
+    color: $color-text;
+    z-index: 1;
+}
+
+.hero--title {
+    font-size: 70px;
+    font-weight: 900;
+    @include text-styles(70px, 900);
+    margin-bottom: 33px;
+    font-family: $font-roboto;
+    color: $color-text;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 120%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.hero--description {
+    font-size: 30px;
+    font-family: $font-roboto;
+    margin-bottom: 52px;
+}
+
+.contactBtn {
+    text-decoration: none;
+    background-color: $color-primary;
+    color: $color-text;
+    border-radius: 100px;
+    @include text-styles(30px, 600);
+    padding: 17px 26px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.heroImg{
+    width: 50%;
+    z-index: 1;
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 10px);
+    }
+
+    100% {
+        transform: translate(0, -10px);
+    }
+}
+
+.topBlur {
+    @include blur(absolute, 50vw, 50vw, 350px, -128px, -10vw, 764px, rgba(25, 55, 109, 0.7), blur(100px), 0);
+  }
+  
+  .bottomBlur {
+    @include blur(absolute, 70vw, 50vw, 350px, 246px, -25vw, 764px, rgba(25, 55, 109, 0.7), blur(100px), 0);
+  }
+
+  @media screen and (max-width: 830px) {
+    .container {
+      flex-direction: column-reverse;
+    }
+  
+    .content {
+      align-items: center;
+    }
+  }

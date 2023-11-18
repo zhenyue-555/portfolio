@@ -1,6 +1,6 @@
 import React from "react";
-// import styles from "./Hero.module.css";
 import { getImageUrl } from "../../utils";
+import "../scss/Hero.scss";
 
 export const Hero = () => {
     return <section className="hero--section">

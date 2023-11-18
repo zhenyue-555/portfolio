@@ -1,6 +1,7 @@
 import React from "react";
 import { getImageUrl } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import "../scss/ProjectCard.scss";
 
 export const ProjectCard = ({project:{title, imageSrc, description, skills, demo, github, details},}) => {
     const navigate = useNavigate();

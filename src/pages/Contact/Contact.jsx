@@ -1,4 +1,5 @@
 import React from "react";
+import "../scss/Contact.scss";
 
 export const Contact =()=> {
     return (

@@ -1,7 +1,7 @@
 import React from "react";
 import {projects} from "../../data/moment.json";
 import { ProjectCard } from "./ProjectCard";
-
+import "../scss/Projects.scss";
 
 export const Projects = () => {
     return (

@@ -1,7 +1,7 @@
+@import './global.scss';
+
 .aboutItem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flexbox(row, null, center);
     border-radius: 20px;
     list-style: none;
     padding: 25px;
@@ -18,11 +18,10 @@
       background-size: 100% 100%;
     }
     h3 {
-      font-size: 25px;
-      font-weight: 600;
+      @include text-styles(25px, 600);
     }
     p {
-      font-size: 25px;
+      @include text-styles(25px);
     }
 }
 
@@ -38,17 +37,12 @@
 }
 
 .about--title {
-    color: var(--color-text);
-    font-size: 35px;
-    font-weight: 700;
-    letter-spacing: 1.75px;
-    text-transform: uppercase;
+    color: $color-text;
+    @include text-styles(35px, 700, 1.75px, uppercase);
 }
 
 .about--content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flexbox(row, null, center);
 }
 
 .aboutImage {
@@ -56,9 +50,8 @@
   }
   
 .aboutItems {
-color: var(--color-text);
-display: flex;
-flex-direction: column;
+color: $color-text;
+@include flexbox(column);
 gap: 50px;
 }
 

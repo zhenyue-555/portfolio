@@ -1,11 +1,10 @@
+@import './global.scss';
+
 .footer--section {
-    color: var(--color-text);
+    color: $color-text;
     margin-top: 120px;
-    background-color: var(--color-secondary);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    background-color: $color-secondary;
+    @include flexbox(row, center, center);
     width: 100vw;
     padding: 58px 10%;
     gap: 5px;
@@ -13,38 +12,29 @@
 
 .footer--text {
   h2 {
-    font-size: 80px;
-    font-weight: 700;
-    letter-spacing: 4px;
+    @include text-styles(80px, 700, 4px);
   }
   p {
-    font-size: 40px;
-    font-weight: 400;
-    letter-spacing: 2px;
+    @include text-styles(40px, 400, 2px);
   }
 }
 
 
 .footer--links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flexbox(row, null, center);
     list-style: none;
     gap: 200px;
   }
 
 .footer--link {
-    display: flex;
-    align-items: center;
+    @include flexbox(null, null, center);
     gap: 10px;
 
     a {
-        color: var(--color-text);
+        color: $color-text;
         text-decoration: none;
         align-items: center;
-        font-size: 30px;
-        font-weight: 400;
-        letter-spacing: 1.5px;
+        @include text-styles(30px, 400, 1.5px);
         gap:10px;
       }
   }
@@ -59,19 +49,16 @@
 
     .footer--text {
     h2 {
-        font-size: 60px;
-        letter-spacing: 3px;
+        @include text-styles(60px, null, 3px);
     }
     p {
-        font-size: 30px;
-        letter-spacing: 1.5px;
+        @include text-styles(30px, null, 1.5px);
     }
 
 }
 
     .footer--links {
-        flex-direction: column;
-        align-items: center;
+        @include flexbox(column, null, center);
         gap: 20px;
     }
 

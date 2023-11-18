@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.scss";
+import "../scss/About.scss";
 import { getImageUrl } from "../../utils";
 
 export const About = () => {

@@ -1,0 +1,20 @@
+@import './global.scss';
+
+.projects--section {
+    margin-top: 76px;
+    color: $color-text;
+    margin-left: 10%;
+    margin-right: 10%;
+    }
+    
+    .projects--title {
+    @include text-styles(35px, 700, 1.75px, uppercase);
+    }
+    
+    .projects {
+    margin-top: 37px;
+    flex-wrap: wrap;
+    @include flexbox(row, center, center);
+    gap: 15px;
+    width: 100%;
+    }
