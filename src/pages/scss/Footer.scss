@@ -4,10 +4,10 @@
     color: $color-text;
     margin-top: 120px;
     background-color: $color-secondary;
-    @include flexbox(row, center, center);
+    // @include flexbox(row, center, center);
     width: 100vw;
     padding: 58px 10%;
-    gap: 5px;
+    // gap: 5px;
   }
 
 .footer--text {
@@ -21,19 +21,21 @@
 
 
 .footer--links {
-    @include flexbox(row, null, center);
+    // @include flexbox(row, null, center);
     list-style: none;
-    gap: 200px;
+    // gap: 200px;
   }
 
 .footer--link {
-    @include flexbox(null, null, center);
-    gap: 10px;
+    // @include flexbox(null, null, center);
+    // gap: 10px;
+    text-align: center;
 
     a {
         color: $color-text;
         text-decoration: none;
         align-items: center;
+        display: flex;
         @include text-styles(30px, 400, 1.5px);
         gap:10px;
       }
@@ -44,23 +46,23 @@
     .footer--section {
         margin-top: 60px;
         padding: 40px 5%;
-        flex-direction: column;
+        // flex-direction: column;
     }
 
-    .footer--text {
-    h2 {
-        @include text-styles(60px, null, 3px);
-    }
-    p {
-        @include text-styles(30px, null, 1.5px);
-    }
+//     .footer--text {
+//     h2 {
+//         @include text-styles(60px, null, 3px);
+//     }
+//     p {
+//         @include text-styles(30px, null, 1.5px);
+//     }
 
-}
+// }
 
-    .footer--links {
-        @include flexbox(column, null, center);
-        gap: 20px;
-    }
+//     .footer--links {
+//         @include flexbox(column, null, center);
+//         gap: 20px;
+//     }
 
     .footer--link {
         justify-content: center;

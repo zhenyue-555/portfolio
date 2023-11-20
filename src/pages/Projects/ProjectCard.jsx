@@ -1,32 +1,32 @@
 import React from "react";
 import { getImageUrl } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import { Card, Button, Badge } from 'react-bootstrap';
 import "../scss/ProjectCard.scss";
 
-export const ProjectCard = ({project:{title, imageSrc, description, skills, demo, github, details},}) => {
+export const ProjectCard = ({ project: { title, imageSrc, description, skills, demo, github, details } }) => {
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/projects/${title}`);
     };
+
     return (
-        <div className="projectcard--section" onClick={handleClick}>
-            <img src={getImageUrl(imageSrc)} alt={`Image of ${title}`} className="projectcard--image"/>
-            <div>
-            <h3 className="projectcard--title">{title}</h3>
-            <p className="projectcard--description">{description}</p>
-            <ul className="skills">
-                {skills.map((skill, id) => {
-                    return (
-                    <li key={id} className="skill">{skill}</li>
-                    );
-                })}
-            </ul>
-            <div className="links">
-                <a href={demo} className="link">Demo</a>
-                <a href={github} className="link">Github</a>
-                <a href={details} className="link">Details</a>
-            </div>
-        </div>
-        </div>
+        <Card className="projectcard--section">
+            <Card.Img variant="top" src={getImageUrl(imageSrc)} alt={`Image of ${title}`} className="projectcard--image" />
+            <Card.Body>
+                <Card.Title className="projectcard--title">{title}</Card.Title>
+                <Card.Text className="projectcard--description">{description}</Card.Text>
+                <div className="skills">
+                    {skills.map((skill, id) => (
+                        <Badge bg="primary" key={id} className="skill">{skill}</Badge>
+                    ))}
+                </div>
+                <div className="links">
+                    <Button className="link" href={demo}>Demo</Button>
+                    <Button className="link" href={github}>Github</Button>
+                    <Button className="link" href={details} onClick={handleClick}>Details</Button>
+                </div>
+            </Card.Body>
+        </Card>
     );
 };

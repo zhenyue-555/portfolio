@@ -1,7 +1,9 @@
 @import './global.scss';
 
 .aboutItem {
-    @include flexbox(row, null, center);
+    // @include flexbox(row, null, center);
+    display: flex;
+    align-items: center;
     border-radius: 20px;
     list-style: none;
     padding: 25px;
@@ -41,34 +43,46 @@
     @include text-styles(35px, 700, 1.75px, uppercase);
 }
 
-.about--content {
-    @include flexbox(row, null, center);
-}
+// .about--content {
+//     @include flexbox(row, null, center);
+// }
 
 .aboutImage {
-    width: 35%;
+    width: 100%;
   }
   
 .aboutItems {
 color: $color-text;
-@include flexbox(column);
+// @include flexbox(column);
 gap: 50px;
+list-style: none;
+padding: 0%;
 }
 
 
 @media screen and (max-width: 830px) {
-    .container {
-      background-color: transparent;
-      padding-left: 0;
-      padding-right: 0;
+    // .container {
+    //   background-color: transparent;
+    //   padding-left: 0;
+    //   padding-right: 0;
+    // }
+    .about--section {
+      padding: 40px 5%;
+      // margin-top: 0;
+      // margin-left: 0;
+      // margin-right: 0;
+      margin-left: 5%;
+      margin-right: 5%;
     }
   
-    .content {
+    .about--content {
       flex-direction: column;
     }
   
     .aboutImage {
-      display: none;
+      // display: none;
+      width: 70%; // Adjust width for smaller screens
+      margin-bottom: 20px; // Add margin below the image
     }
   
     .aboutItems {
@@ -76,7 +90,8 @@ gap: 50px;
     }
   
     .aboutItem {
-      padding-left: 0;
-      padding-right: 0;
+      // padding-left: 0;
+      // padding-right: 0;
+      padding: 15px; // Adjust padding for smaller items
     }
   }

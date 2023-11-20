@@ -2,10 +2,10 @@
 
 .navbar{
     position: relative;
-    @include flexbox(null, space-between, center);
     padding-top: 61px;
     z-index: 2;
-    margin: 0 10%
+    margin: 0 10%;
+
 }
 
 .navbar--title {
@@ -14,9 +14,6 @@
     color: $color-text;
 }
 
-.menu {
-    display: flex;
-}
 
 .menuItems {
     display: flex;
@@ -39,15 +36,6 @@
     .navbar {
       flex-direction: column;
       align-items: flex-start;
-    }
-  
-    .menu {
-      position: absolute;
-      right: 0;
-      margin-right: 10%;
-      @include flexbox(column, null, flex-end);
-      gap: 11px;
-      z-index: 3;
     }
   
     .menuBtn {

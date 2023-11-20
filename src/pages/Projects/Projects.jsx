@@ -1,19 +1,22 @@
 import React from "react";
-import {projects} from "../../data/moment.json";
+import { Container, Row, Col } from 'react-bootstrap';
+import { projects } from "../../data/moment.json";
 import { ProjectCard } from "./ProjectCard";
 import "../scss/Projects.scss";
 
 export const Projects = () => {
     return (
         <section className="projects--section" id="projects">
-        <div>
-        <h2 className="projects--title">Projects</h2>
-        <div className="projects">
-            {projects.map((project, id) => {
-                    return <ProjectCard project={project} key={id} />;
-                })}
-        </div>
-        </div>
+            <Container>
+                <h2 className="projects--title">Projects</h2>
+                <Row className="projects">
+                    {projects.map((project, id) => (
+                        <Col md={4} key={id}>
+                            <ProjectCard project={project} />
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
         </section>
     );
 };

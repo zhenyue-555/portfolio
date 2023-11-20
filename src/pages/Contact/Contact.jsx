@@ -1,75 +1,52 @@
 import React from "react";
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import "../scss/Contact.scss";
 
-export const Contact =()=> {
-    return (
-      <section id="Contact" className="contact--section">
-        <div className="text-h2">
+export const Contact = () => {
+  return (
+    <section id="Contact" className="contact--section">
+      <Container>
+        <Row className="text-h2">
           <h2>Contact Me</h2>
-        </div>
-        <form className="contact--form--container" action="https://formspree.io/mdorjzyb" method="POST">
-          <div className="contact--container">
-            <label htmlFor="first-name" className="contact--label">
-              <span className="text-md">First Name</span>
-              <input
-                type="text"
-                className="contact--input text-input"
-                name="first-name"
-                id="first-name"
-                required
-              />
-            </label>
-            <label htmlFor="last-name" className="contact--label">
-              <span className="text-md">Last Name</span>
-              <input
-                type="text"
-                className="contact--input text-input"
-                name="last-name"
-                id="last-name"
-                required
-              />
-            </label>
-            <label htmlFor="email" className="contact--label">
-              <span className="text-md">Email</span>
-              <input
-                type="email"
-                className="contact--input text-input"
-                name="email"
-                id="email"
-                data-rule="email"
-                data-msg="Please enter a valid email"
-                required
-              />
-            </label>
-            <label htmlFor="phone-number" className="contact--label">
-              <span className="text-md">phone-number</span>
-              <input
-                type="number"
-                className="contact--input text-input"
-                name="phone-number"
-                id="phone-number"
-                data-rule="minlen:10"
-                data-msg="Please enter at least 10 numbers"
-                required
-              />
-            </label>
+        </Row>
+        <Form className="contact--form--container" action="https://formspree.io/mdorjzyb" method="POST">
+          <Row className="mb-3">
+            <Col md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label className="text-md">First Name</Form.Label>
+                <Form.Control type="text" name="first-name" id="first-name" required />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label className="text-md">Last Name</Form.Label>
+                <Form.Control type="text" name="last-name" id="last-name" required />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label className="text-md">Email</Form.Label>
+                <Form.Control type="email" name="email" id="email" required />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group className="mb-3">
+                <Form.Label className="text-md">Phone Number</Form.Label>
+                <Form.Control type="number" name="phone-number" id="phone-number" required />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Form.Group className="mb-3">
+            <Form.Label className="text-md">Message</Form.Label>
+            <Form.Control as="textarea" name="message" id="message" rows="8" required placeholder="Type your message..."/>
+          </Form.Group>
+          <div className="text-center">
+            <Button variant="primary" type="submit">Submit</Button>
           </div>
-          <label htmlFor="message" className="contact--label">
-            <span className="text-md">Message</span>
-            <textarea
-              className="contact--input text-input"
-              id="message"
-              name="message"
-              rows="8"
-              placeholder="Type your message..."
-              required
-            >
-            </textarea>
-            </label>
-          <div>
-            <button className="btn btn-primary contact--form--btn">Submit</button>
-          </div>
-        </form>
-      </section>
-    );
-  }
+        </Form>
+      </Container>
+    </section>
+  );
+};

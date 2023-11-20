@@ -15,11 +15,11 @@
 
 .hero--section {
     position: relative;
-    @include flexbox(null, space-between, center);
+    // @include flexbox(null, space-between, center);
     margin-top: 49px;
     z-index: 1;
-    margin-left: 10%;
-    margin-right: 10%;
+    // margin-left: 10%;
+    // margin-right: 10%;
 }
 
 .hero--content {
@@ -57,26 +57,19 @@
 }
 
 .heroImg{
-    width: 50%;
+    width: 100%;
     z-index: 1;
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    // animation-name: floating;
+    // animation-duration: 3s;
+    // animation-iteration-count: infinite;
+    // animation-timing-function: ease-in-out;
+    animation: floating 3s ease-in-out infinite;
 }
 
 @keyframes floating {
-    0% {
-        transform: translate(0, 0px);
-    }
-
-    50% {
-        transform: translate(0, 10px);
-    }
-
-    100% {
-        transform: translate(0, -10px);
-    }
+    0% { transform: translate(0, 0px); }
+    50% { transform: translate(0, 10px); }
+    100% { transform: translate(0, -10px); }
 }
 
 .topBlur {
@@ -88,11 +81,14 @@
   }
 
   @media screen and (max-width: 830px) {
-    .container {
-      flex-direction: column-reverse;
+    .hero--content {
+        align-items: center;
     }
-  
-    .content {
-      align-items: center;
+    .heroImg {
+        width: 70%;
+    }
+
+    .topBlur, .bottomBlur {
+        display: none;
     }
   }

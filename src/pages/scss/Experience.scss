@@ -10,16 +10,11 @@
 .experience--title {
 color: $color-text;
 @include text-styles(35px, 700, 1.75px, uppercase);
+margin-bottom: 14px;
 }
-
-.experience--content {
-@include flexbox(row, space-between);
-margin-top: 14px;
-}
-
 
 .experience--skills {
-width: 45%;
+// width: 45%;
 display: flex;
 flex-wrap: wrap;
 gap: 37px;
@@ -48,16 +43,9 @@ font-family: $font-roboto;
 @include text-styles(25px, 500);
 }
 
-.history {
-width: 45%;
-@include flexbox(column, null, center);
-gap: 40px;
-}
-
 .historyItem {
 @include flexbox(row, null, center);
 gap: 17px;
-background: #19376d;
 background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
 border-radius: 10px;
 padding: 24px;
@@ -90,10 +78,6 @@ margin-left: 17px;
 
 
 @media screen and (max-width: 1200px) {
-  .experience--content {
-    @include flexbox(column, null, center);
-    margin-top: 14px;
-  }
 
   .experience--skills {
     width: 100%;
@@ -103,13 +87,8 @@ margin-left: 17px;
   }
 
   .experience--skill {
-    flex: 1 0 calc(50% - 20px); /* closer alignment */
-    max-width: calc(50% - 20px); /* Adjust max-width accordingly */
+    flex-basis: calc(33% - 20px); // 3 items per row
+    max-width: calc(33% - 20px); // Adjust max-width accordingly
 }
-
-  .history {
-    width: 100%;
-    gap: 9px;
-  }
 
 }

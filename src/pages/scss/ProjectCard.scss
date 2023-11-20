@@ -13,16 +13,18 @@
     margin-bottom: 26px;
 }
 
-.projectcard--title {
+.card .projectcard--title {
     @include text-styles(25px, 700);
+    color: $color-text;
 }
 
-.projectcard--description {
+.card .projectcard--description {
     margin-top: 6px;
     @include text-styles(25px, 400);
+    color: $color-text;
 }
 
-.skills {
+.card .skills {
 width: 100%;
 margin-top: 14px;
 @include flexbox(row);
@@ -31,10 +33,10 @@ gap: 6px;
 list-style: none;
 }
   
-.skill {
+.card .skill {
 @include text-styles(25px, 400);
 border-radius: 100px;
-background: $color-dark;
+// background: $color-dark;
 padding: 2px 22px;
 }
   
@@ -44,11 +46,11 @@ margin-top: 26px;
 @include flexbox(null, space-around);
 }
 
-.link {
+.btn.link {
 text-decoration: none;
 color: $color-text;
 @include text-styles(20px, 600);
 border-radius: 100px;
-background: $color-secondary;
+background: $color-primary;
 padding: 1px 22px;
 }
