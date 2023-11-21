@@ -5,21 +5,21 @@ import "../scss/Hero.scss";
 
 export const Hero = () => {
     return (
-        <section className="hero--section">
-            <Container>
+        // <section className="hero--section">
+            <Container className="hero--section">
                 <Row className="align-items-center">
-                    <Col md={6} className="hero--content">
+                    <Col xs={8} md={6} className="hero--content">
                         <h1 className="hero--title">Hi, I'm Amanda</h1>
                         <p className="hero--description">I'm a full stack developer. Reach out if you'd like to know more!</p>
                         <a href="mailto:amanda.yuzy@gmail.com" className="contactBtn">Contact Me</a>
                     </Col>
-                    <Col md={6}>
+                    <Col xs={4} md={6}>
                         <Image src={getImageUrl("hero/heroImage.png")} alt="Hero Image of me" className="heroImg"/>
                     </Col>
                 </Row>
-            </Container>
             <div className="topBlur" />
             <div className="bottomBlur" />
-        </section>
+            </Container>
+        // </section>
     );
 };

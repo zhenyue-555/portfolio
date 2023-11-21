@@ -11,13 +11,13 @@ export const Contact = () => {
         </Row>
         <Form className="contact--form--container" action="https://formspree.io/mdorjzyb" method="POST">
           <Row className="mb-3">
-            <Col md={6}>
+            <Col md={6} xs={12}>
               <Form.Group className="mb-3">
                 <Form.Label className="text-md">First Name</Form.Label>
                 <Form.Control type="text" name="first-name" id="first-name" required />
               </Form.Group>
             </Col>
-            <Col md={6}>
+            <Col md={6} xs={12}>
               <Form.Group className="mb-3">
                 <Form.Label className="text-md">Last Name</Form.Label>
                 <Form.Control type="text" name="last-name" id="last-name" required />
@@ -25,13 +25,13 @@ export const Contact = () => {
             </Col>
           </Row>
           <Row className="mb-3">
-            <Col md={6}>
+            <Col md={6} xs={12}>
               <Form.Group className="mb-3">
                 <Form.Label className="text-md">Email</Form.Label>
                 <Form.Control type="email" name="email" id="email" required />
               </Form.Group>
             </Col>
-            <Col md={6}>
+            <Col md={6} xs={12}>
               <Form.Group className="mb-3">
                 <Form.Label className="text-md">Phone Number</Form.Label>
                 <Form.Control type="number" name="phone-number" id="phone-number" required />

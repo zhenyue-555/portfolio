@@ -6,21 +6,23 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 
 export const Experience = () => {
     return (
-        <section className="experience--container" id="experience">
-            <Container>
+        // <section className="experience--container" id="experience">
+            <Container className="experience--container" id="experience">
                 <h2 className="experience--title">Experience</h2>
-                <Row className="experience--content">
-                    <Col md={6} className="experience--skills">
+                <Row>
+                    <Col lg={6} xs={12} className="experience--skills">
+                        <Row>
                         {skills.map((skill, id) => (
-                            <div key={id} className="experience--skill">
+                            <Col xs={4} md={3} lg={6} key={id} className="experience--skill">
                                 <div className="skillImageContainer">
-                                    <Image src={getImageUrl(skill.imageSrc)} alt={skill.title} />
+                                    <Image className="experience-icon" src={getImageUrl(skill.imageSrc)} alt={skill.title}/>
                                 </div>
                                 <p>{skill.title}</p>
-                            </div>
+                            </Col>
                         ))}
+                        </Row>
                     </Col>
-                    <Col md={6}>
+                    <Col lg={6} xs={12}>
                         <ul>
                             {history.map((historyItem, id) => (
                                 <li key={id} className="historyItem">
@@ -40,6 +42,6 @@ export const Experience = () => {
                     </Col>
                 </Row>
             </Container>
-        </section>
+        // </section>
     );
 };

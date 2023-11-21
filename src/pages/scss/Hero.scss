@@ -1,5 +1,6 @@
 @import './global.scss';
 
+// default for large destop, small desktop, tablet
 @mixin blur($position: absolute, $width: 50vw, $height: 50vw, $min-width: 350px, $top: -128px, $left: -10vw, $border-radius: 764px, $background: rgba(25, 55, 109, 0.7), $filter: blur(100px), $z-index: 0) {
     position: $position;
     width: $width;
@@ -29,8 +30,6 @@
 }
 
 .hero--title {
-    font-size: 70px;
-    font-weight: 900;
     @include text-styles(70px, 900);
     margin-bottom: 33px;
     font-family: $font-roboto;
@@ -59,10 +58,6 @@
 .heroImg{
     width: 100%;
     z-index: 1;
-    // animation-name: floating;
-    // animation-duration: 3s;
-    // animation-iteration-count: infinite;
-    // animation-timing-function: ease-in-out;
     animation: floating 3s ease-in-out infinite;
 }
 
@@ -92,3 +87,21 @@
         display: none;
     }
   }
+
+  @media only screen and (max-width: 767px) {
+    /* Styles for screens < 768px */
+    .hero--title {
+        @include text-styles(20px, 900);
+        margin-bottom: 10px;
+        padding-right: 60%;
+    }
+    .hero--description {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .contactBtn {
+        @include text-styles(10px, 600);
+        padding: 10px 10px;
+    }
+}

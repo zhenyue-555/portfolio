@@ -10,7 +10,7 @@
     color: $white;
     font-style: normal;
     line-height: 24px;
-    @include text-styles(16px, 400);
+    @include text-styles(20px, 400);
     }
     
     .contact--section {
@@ -53,7 +53,7 @@
     
       .contact--form--container, .contact--container {
           width: 100%;
-          grid-template-columns: auto; /* Change to a single column */
+        //   grid-template-columns: auto; /* Change to a single column */
       }
 
     

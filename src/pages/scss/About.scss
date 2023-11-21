@@ -1,5 +1,6 @@
 @import './global.scss';
 
+//default for large computer, laptop, tablet
 .aboutItem {
     // @include flexbox(row, null, center);
     display: flex;
@@ -43,9 +44,6 @@
     @include text-styles(35px, 700, 1.75px, uppercase);
 }
 
-// .about--content {
-//     @include flexbox(row, null, center);
-// }
 
 .aboutImage {
     width: 100%;
@@ -60,38 +58,35 @@ padding: 0%;
 }
 
 
-@media screen and (max-width: 830px) {
-    // .container {
-    //   background-color: transparent;
-    //   padding-left: 0;
-    //   padding-right: 0;
-    // }
+@media screen and (max-width: 767px) {
+  .about--title {
+    @include text-styles(20px, 700, 1.75px, uppercase);
+}
     .about--section {
-      padding: 40px 5%;
-      // margin-top: 0;
-      // margin-left: 0;
-      // margin-right: 0;
       margin-left: 5%;
       margin-right: 5%;
+      padding: 50px;
     }
   
     .about--content {
       flex-direction: column;
     }
-  
-    .aboutImage {
-      // display: none;
-      width: 70%; // Adjust width for smaller screens
-      margin-bottom: 20px; // Add margin below the image
-    }
-  
     .aboutItems {
       margin-top: 29px;
     }
   
     .aboutItem {
-      // padding-left: 0;
-      // padding-right: 0;
-      padding: 15px; // Adjust padding for smaller items
+      padding: 15px;
+    h3 {
+      @include text-styles(18px, 600);
+    }
+    p {
+      @include text-styles(15px);
     }
   }
+  }
+
+
+
+
+

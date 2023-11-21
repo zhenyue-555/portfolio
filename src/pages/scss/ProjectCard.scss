@@ -1,12 +1,12 @@
 @import './global.scss';
 
 .projectcard--section {
-    @include flexbox(column);
+    // @include flexbox(column);
     border-radius: 10px;
     background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
     box-shadow: 0 16px 14px 0 #04152d;
-    padding: 18px 24px;
-    max-width: 345px;
+    padding: 10px 20px;
+    // max-width: 345px;
 }
 
 .projectcard--image {
@@ -37,13 +37,14 @@ list-style: none;
 @include text-styles(25px, 400);
 border-radius: 100px;
 // background: $color-dark;
-padding: 2px 22px;
+// padding: 2px 20px;
 }
   
 .links {
 width: 100%;
 margin-top: 26px;
-@include flexbox(null, space-around);
+// @include flexbox(row);
+
 }
 
 .btn.link {
@@ -52,5 +53,30 @@ color: $color-text;
 @include text-styles(20px, 600);
 border-radius: 100px;
 background: $color-primary;
-padding: 1px 22px;
+// padding: 1px 20px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .card .projectcard--description {
+        @include text-styles(20px, 400);
+    }
+}
+
+@media only screen and (max-width: 767px) {
+.card .projectcard--title {
+    @include text-styles(20px, 700);
+    color: $color-text;
+}
+
+.card .projectcard--description {
+    margin-top: 6px;
+    @include text-styles(15px, 400);
+    color: $color-text;
+}
+.card .skill {
+    @include text-styles(18px, 400);
+    }
+.btn.link {
+    @include text-styles(15px, 600);
+    }
 }

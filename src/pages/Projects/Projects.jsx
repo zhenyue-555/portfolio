@@ -6,17 +6,17 @@ import "../scss/Projects.scss";
 
 export const Projects = () => {
     return (
-        <section className="projects--section" id="projects">
-            <Container>
+        // <section className="projects--section" id="projects">
+            <Container className="projects--section" id="projects">
                 <h2 className="projects--title">Projects</h2>
                 <Row className="projects">
                     {projects.map((project, id) => (
-                        <Col md={4} key={id}>
+                        <Col xs={12} lg={4} key={id}>
                             <ProjectCard project={project} />
                         </Col>
                     ))}
                 </Row>
             </Container>
-        </section>
+        // </section>
     );
 };

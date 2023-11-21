@@ -15,9 +15,12 @@
     width: 100%;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         .projects--section {
             padding-left: 5%;
             padding-right: 5%;
         }
+        .projects--title {
+            @include text-styles(20px, 700, 1.75px, uppercase);
+            }
     }

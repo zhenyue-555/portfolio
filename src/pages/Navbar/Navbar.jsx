@@ -7,20 +7,20 @@ export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="navbar">
+        // <nav className="navbar">
             <Container>
                 <Row className="align-items-center">
-                    <Col>
+                    <Col xs={9} md={3}>
                         <a className="navbar--title" href="/">Portfolio</a>
                     </Col>
-                    <Col className="text-right">
+                    <Col className="align-right">
                         <img className="menuBtn" 
                              src={menuOpen ? getImageUrl("nav/closeIcon.png") : getImageUrl("nav/menuIcon.png")}
                              alt="menu-button" 
                              onClick={() => setMenuOpen(!menuOpen)} />
                     </Col>
-                </Row>
-                <Row>
+                {/* </Row>
+                <Row> */}
                     <Col>
                         <ul className={`menuItems ${menuOpen ? "menu-Open" : ""}`}
                             onClick={() => setMenuOpen(false)}>
@@ -32,6 +32,6 @@ export const Navbar = () => {
                     </Col>
                 </Row>
             </Container>
-        </nav>
+        // </nav>
     );
 };
