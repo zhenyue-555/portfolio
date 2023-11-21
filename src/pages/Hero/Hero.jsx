@@ -17,8 +17,6 @@ export const Hero = () => {
                         <Image src={getImageUrl("hero/heroImage.png")} alt="Hero Image of me" className="heroImg"/>
                     </Col>
                 </Row>
-            <div className="topBlur" />
-            <div className="bottomBlur" />
             </Container>
         // </section>
     );
