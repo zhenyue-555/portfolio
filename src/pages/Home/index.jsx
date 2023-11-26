@@ -5,6 +5,8 @@ import { Hero } from '../Hero/Hero';
 import { Projects } from '../Projects/Projects';
 import { Footer } from '../Footer/Footer';
 import { Navbar } from '../Navbar/Navbar';
+import Todo from "../Todo/Todo";
+
 
 
 export default function Home() {
@@ -16,6 +18,7 @@ export default function Home() {
        <Experience />
        <Projects />
        <Contact />
+       <Todo />
        <Footer />
        </>
     );

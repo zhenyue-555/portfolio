@@ -28,9 +28,9 @@ export const Experience = () => {
                                 <li key={id} className="historyItem">
                                     <Image src={getImageUrl(historyItem.imageSrc)} alt={`${historyItem.organisation} Logo`} />
                                     <div className="historyItemDetails">
-                                        <h3>{`${historyItem.role}, ${historyItem.organisation}`}</h3>
-                                        <p>{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
-                                        <ul>
+                                        <h3 className="role">{`${historyItem.role}, ${historyItem.organisation}`}</h3>
+                                        <p className="date">{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
+                                        <ul className="experienceItem">
                                             {historyItem.experiences.map((experience, id) => (
                                                 <li key={id}>{experience}</li>
                                             ))}

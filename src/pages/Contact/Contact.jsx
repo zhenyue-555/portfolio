@@ -4,8 +4,8 @@ import "../scss/Contact.scss";
 
 export const Contact = () => {
   return (
-    <section id="Contact" className="contact--section">
-      <Container>
+    // <section id="Contact" className="contact--section">
+      <Container id="Contact" className="contact--section">
         <Row className="text-h2">
           <h2>Contact Me</h2>
         </Row>
@@ -47,6 +47,6 @@ export const Contact = () => {
           </div>
         </Form>
       </Container>
-    </section>
+    // </section>
   );
 };

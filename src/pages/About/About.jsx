@@ -22,8 +22,8 @@ export const About = () => {
                 <Image src={getImageUrl("about/cursorIcon.png")} alt="Cursor icon" />
                 </div>
                 <div>
-                  <h3>Front End Skills</h3>
-                  <p>HTML/CSS, React, JavaScript, Responsive Web Design</p>
+                  <h3 className="title">Front End Skills</h3>
+                  <p className="description">HTML/CSS, React, JavaScript, Responsive Web Design</p>
                 </div>
               </li>
               <li className="aboutItem">
@@ -31,17 +31,17 @@ export const About = () => {
                 <Image src={getImageUrl("about/serverIcon.png")} alt="Server Icon" />
                 </div>
                 <div className="aboutItemText">
-                  <h3>Back End Skills</h3>
-                  <p>Node.js, MySQL, MongoDB, API development, Docker, AWS</p>
+                  <h3 className="title">Back End Skills</h3>
+                  <p className="description">Node.js, MySQL, MongoDB, API development, Docker, AWS</p>
                 </div>
               </li>
               <li className="aboutItem">
               <div className="d-none d-md-block d-lg-block">
                 <Image src={getImageUrl("about/uiIcon.png")} alt="UI Icon" />
                 </div>
-                <div className="aboutItemText">
-                  <h3>UI Designer</h3>
-                  <p>Adobe Creative Suite, Figma</p>
+                <div className= "aboutItemText">
+                  <h3 className="title">UI Designer</h3>
+                  <p className="description">Adobe Creative Suite, Figma</p>
                 </div>
               </li>
             </ul>

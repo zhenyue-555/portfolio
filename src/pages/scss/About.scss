@@ -20,12 +20,13 @@
     &:hover {
       background-size: 100% 100%;
     }
-    h3 {
-      @include text-styles(25px, 600);
-    }
-    p {
-      @include text-styles(25px);
-    }
+}
+
+.title {
+  @include text-styles(25px, 600);
+}
+.description {
+  @include text-styles(25px);
 }
 
 .about--section {
@@ -77,13 +78,15 @@ padding: 0%;
   
     .aboutItem {
       padding: 15px;
-    h3 {
-      @include text-styles(18px, 600);
-    }
-    p {
-      @include text-styles(15px);
-    }
   }
+
+  .title {
+    @include text-styles(18px, 600);
+  }
+  .description {
+    @include text-styles(15px);
+  }
+  
   }
 
 
