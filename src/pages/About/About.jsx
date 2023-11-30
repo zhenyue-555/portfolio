@@ -25,8 +25,8 @@ export const About = () => {
                   <Image src={getImageUrl(`about/${item.icon}`)} alt={`${item.title} icon`} />
                 </div>
                 <div className="aboutItemText">
-                  <h3 className="title">{item.title}</h3>
-                  <p className="description">{item.description}</p>
+                  <h3 className="about-item-title">{item.title}</h3>
+                  <p className="about-item-description">{item.description}</p>
                 </div>
               </li>
             ))}

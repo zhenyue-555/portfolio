@@ -22,10 +22,10 @@
     }
 }
 
-.title {
+.about-item-title {
   @include text-styles(25px, 600);
 }
-.description {
+.about-item-description {
   @include text-styles(25px);
 }
 
@@ -80,10 +80,10 @@ padding: 0%;
       padding: 15px;
   }
 
-  .title {
+  .about-item-title {
     @include text-styles(18px, 600);
   }
-  .description {
+  .about-item-description {
     @include text-styles(15px);
   }
   

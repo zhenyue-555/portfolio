@@ -7,7 +7,8 @@ import "../scss/ProjectCard.scss";
 export const ProjectCard = ({ project: { title, imageSrc, description, skills, demo, github, details } }) => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/projects/${title}`);
+        // navigate(`/projects/${title}`);
+        window.open(`/projects/${title}`);
     };
 
     return (
@@ -22,9 +23,9 @@ export const ProjectCard = ({ project: { title, imageSrc, description, skills, d
                     ))}
                 </div>
                 <div className="links">
-                    <Button className="link" href={demo}>Demo</Button>
-                    <Button className="link" href={github}>Github</Button>
-                    <Button className="link" href={details} onClick={handleClick}>Details</Button>
+                    <Button className="link" href={demo} target="_blank">Demo</Button>
+                    <Button className="link" href={github} target="_blank">Github</Button>
+                    <Button className="link" href={details} target="_blank" onClick={handleClick}>Details</Button>
                 </div>
             </Card.Body>
         </Card>
