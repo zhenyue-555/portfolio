@@ -1,14 +1,23 @@
 import React from "react";
 import { getImageUrl } from "../../utils";
-import { useNavigate } from "react-router-dom";
 import { Card, Button, Badge } from 'react-bootstrap';
 import "../scss/ProjectCard.scss";
 
-export const ProjectCard = ({ project: { title, imageSrc, description, skills, demo, github, details } }) => {
-    const navigate = useNavigate();
-    const handleClick = () => {
-        // navigate(`/projects/${title}`);
-        window.open(`/projects/${title}`);
+export const ProjectCard = ({ project }) => {
+    const { title, imageSrc, description, skills, demo, github, details } = project;
+
+    const generateLinkButtons = () => {
+        const links = [
+            { url: demo, label: 'Demo' },
+            { url: github, label: 'Github' },
+            { url: details, label: 'Details', onClick: () => window.open(`/projects/${title}`) }
+        ];
+
+        return links.filter(link => link.url).map((link, index) => (
+            <Button key={index} className="link" href={link.url} target="_blank" onClick={link.onClick}>
+                {link.label}
+            </Button>
+        ));
     };
 
     return (
@@ -23,9 +32,7 @@ export const ProjectCard = ({ project: { title, imageSrc, description, skills, d
                     ))}
                 </div>
                 <div className="links">
-                    <Button className="link" href={demo} target="_blank">Demo</Button>
-                    <Button className="link" href={github} target="_blank">Github</Button>
-                    <Button className="link" href={details} target="_blank" onClick={handleClick}>Details</Button>
+                    {generateLinkButtons()}
                 </div>
             </Card.Body>
         </Card>

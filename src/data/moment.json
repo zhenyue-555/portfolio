@@ -37,7 +37,7 @@
             ],
             "demo": "https://www.youtube.com/watch?v=eH0JqqH5bBw",
             "github": "https://github.com/zhenyue-555/shoppingplatform",
-            "details": ""
+            "details": "1"
         },
         {
             "title": "My portfolio",
@@ -51,7 +51,7 @@
             ],
             "demo": "https://zhenyueyu-portfolio.netlify.app/",
             "github": "https://github.com/zhenyue-555/portfolio",
-            "details": ""
+            "details": "2"
         },
         {
             "title": "Project C",
@@ -65,13 +65,13 @@
             ],
             "demo": "https://www.example.com",
             "github": "https://www.github.com",
-            "details": ""
+            "details": "3"
         }
     ],
     "history": [
         {
             "role": "software developer Intern",
-            "organisation": "startup",
+            "organisation": "Jobster",
             "startDate": "Sep, 2023",
             "endDate": "present",
             "experiences": [
@@ -109,6 +109,11 @@
           "title": "UI Designer",
           "description": "Adobe Creative Suite, Figma"
         }
+      ],
+
+      "socialLinks": [
+        { "url": "mailto:amanda.yuzy@gmail.com", "imgSrc": "contact/emailIcon.png", "text": "Gmail" },
+        { "url": "https://www.linkedin.com/in/zhenyue-yu-2062a11a9/", "imgSrc": "contact/linkedinIcon.png", "text": "Linkedin" },
+        { "url": "https://github.com/zhenyue-555", "imgSrc": "contact/githubIcon.png", "text": "GitHub" }
       ]
-      
 }
