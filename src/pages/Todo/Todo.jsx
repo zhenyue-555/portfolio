@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { database } from '../../firebase';
 import { ref, push, update, remove, onValue } from 'firebase/database';
 import { Container, Row, Col, Form, Button, ListGroup, InputGroup, Collapse, ListGroupItem } from 'react-bootstrap';
-import '../scss/Todo.scss';
+import './Todo.scss';
+// import '../scss/Todo.scss';
 
 function Todo() {
     const [taskText, setTaskText] = useState("");
@@ -26,7 +27,7 @@ function Todo() {
     };
 
     const addSubtask = (taskId, subtaskText) => {
-        const newSubtask = { text: subtaskText, completed: false }; // Create a subtask object
+        const newSubtask = { text: subtaskText, completed: false };
         const updatedTasks = tasks.map(task => {
             if (task.id === taskId) {
                 const newSubtasks = task.subtasks ? [...task.subtasks, newSubtask] : [newSubtask];

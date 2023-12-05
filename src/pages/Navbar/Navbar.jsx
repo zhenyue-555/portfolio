@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { getImageUrl } from "../../utils";
-import '../scss/Navbar.scss';
+import './Navbar.scss';
+// import '../scss/Navbar.scss';
 
 export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        // <nav className="navbar">
             <Container>
                 <Row className="align-items-center">
                     <Col xs={9} md={3}>
@@ -32,6 +32,5 @@ export const Navbar = () => {
                     </Col>
                 </Row>
             </Container>
-        // </nav>
     );
 };

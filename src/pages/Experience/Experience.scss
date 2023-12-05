@@ -1,0 +1,116 @@
+@import '../../App.scss';
+
+.experience--container {
+    color: $color-text;
+    margin-top: 79px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    .experience--title {
+        color: $color-text;
+        @include text-styles(35px, 700, 1.75px, uppercase);
+        margin-bottom: 25px;
+        }
+
+    .experience--skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 37px;
+
+        .experience--skill {
+            @include flexbox(column, null, center);
+            gap: 10px;
+            flex: 1 0 45%;
+
+            p {
+                font-family: $font-roboto;
+                @include text-styles(25px, 500);
+                }                
+
+            .skillImageContainer {
+                @include flexbox(row, center, center);
+                width: auto;
+                height: auto;
+                }
+            }
+        }
+
+    .historyItem {
+        @include flexbox(row, null, center);
+        gap: 17px;
+        background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
+        border-radius: 10px;
+        padding: 10px;
+
+        .historyItemDetails {
+            font-family: $font-roboto;
+            .role {
+                @include text-styles(30px, 500);
+                }
+                
+            .date {
+                @include text-styles(20px, 500);
+                }
+            .experienceItem {
+            margin-top: 6px;
+            list-style-position: inside;
+            font-size: 25px;
+            list-style-type: disc;
+            margin-left: 17px;
+                }
+            }
+
+        img {
+            width: 50px;
+            }
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .experience--container {
+        .experience--title {
+            @include text-styles(20px, 700, 1.75px, uppercase);
+            margin-bottom: 30px;
+            }
+
+        .experience--skills {
+            width: 100%;
+            @include flexbox(row, center);
+            flex: 1 0 45%;
+            gap: 40px;
+    
+            .experience--skill p {
+                @include text-styles(15px, 500);
+                }
+    
+            .experience-icon {
+                width: 50%;
+                }
+            }
+    
+        .historyItem {
+            @include flexbox(row, null, center);
+            gap: 17px;
+            background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
+            border-radius: 10px;
+            padding: 10px;
+            .historyItemDetails {
+                .role {
+                    @include text-styles(18px, 500);
+                    }
+                    
+                .date {
+                @include text-styles(15px, 500);
+                }
+                .experienceItem {
+                list-style-position: outside;
+                font-size: 13px;
+                    }
+            }
+            }
+    }
+    
+}
+    
+

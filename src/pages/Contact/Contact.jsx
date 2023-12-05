@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import "../scss/Contact.scss";
+import "./Contact.scss";
+// import '../scss/Contact.scss';
 
 export const Contact = () => {
-  // Define the form fields in rows
   const formRows = [
     [
       { id: "first-name", label: "First Name", type: "text", md: 6, xs: 12 },
@@ -12,6 +12,9 @@ export const Contact = () => {
     [
       { id: "email", label: "Email", type: "email", md: 6, xs: 12 },
       { id: "phone-number", label: "Phone Number", type: "number", md: 6, xs: 12 }
+    ],
+    [
+      { id: "message", label: "Message", type: "textarea", md: 12, xs: 12 }
     ]
   ];
 
@@ -29,16 +32,16 @@ export const Contact = () => {
               <Col md={field.md} xs={field.xs} key={field.id}>
                 <Form.Group className="mb-3">
                   <Form.Label className="text-md">{field.label}</Form.Label>
+                  {field.id === "message" ? (
+                  <Form.Control as="textarea" name={field.id} id={field.id} rows="8" required placeholder="Type your message..."/>
+                ) : (
                   <Form.Control type={field.type} name={field.id} id={field.id} required />
+                )}
                 </Form.Group>
               </Col>
             ))}
           </Row>
         ))}
-        <Form.Group className="mb-3">
-          <Form.Label className="text-md">Message</Form.Label>
-          <Form.Control as="textarea" name="message" id="message" rows="8" required placeholder="Type your message..."/>
-        </Form.Group>
         <div className="text-center">
           <Button variant="primary" type="submit">Submit</Button>
         </div>

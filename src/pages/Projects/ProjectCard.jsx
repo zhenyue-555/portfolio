@@ -1,7 +1,8 @@
 import React from "react";
 import { getImageUrl } from "../../utils";
 import { Card, Button, Badge } from 'react-bootstrap';
-import "../scss/ProjectCard.scss";
+import "./ProjectCard.scss";
+// import "../scss/ProjectCard.scss";
 
 export const ProjectCard = ({ project }) => {
     const { title, imageSrc, description, skills, demo, github, details } = project;

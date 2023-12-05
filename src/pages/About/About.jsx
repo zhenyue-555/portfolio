@@ -1,5 +1,6 @@
 import React from "react";
-import "../scss/About.scss";
+import "./About.scss";
+// import '../scss/About.scss';
 import { getImageUrl } from "../../utils";
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import {aboutItems} from "../../data/moment.json";

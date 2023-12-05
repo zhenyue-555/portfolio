@@ -1,12 +1,12 @@
 import React from "react";
 import { getImageUrl } from "../../utils";
 import { history, skills } from "../../data/moment.json";
-import "../scss/Experience.scss";
+import "./Experience.scss";
+// import "../scss/Experience.scss";
 import { Container, Row, Col, Image } from 'react-bootstrap';
 
 export const Experience = () => {
     return (
-        // <section className="experience--container" id="experience">
             <Container className="experience--container" id="experience">
                 <h2 className="experience--title">Experience</h2>
                 <Row>
@@ -42,6 +42,5 @@ export const Experience = () => {
                     </Col>
                 </Row>
             </Container>
-        // </section>
     );
 };

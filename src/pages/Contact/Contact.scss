@@ -1,0 +1,50 @@
+@import '../../App.scss';
+
+.contact--section {
+    padding: 150px 85px;
+    text-align: center;
+    gap: 64px;
+
+    .text-h2 {
+        color: $white;
+        @include text-styles(40px, 700, 4px);
+        margin-bottom: 1rem;
+        }
+
+    .contact--form--container {
+        display: grid;
+        flex-direction: column;
+        margin: 0 auto;
+        grid-template-columns: auto;
+        grid-template-rows: repeat(5, auto);
+        width: auto;
+        row-gap: 32px;
+
+        .text-md {
+            color: $white;
+            font-style: normal;
+            line-height: 24px;
+            @include text-styles(20px, 400);
+            }
+        }
+    }
+
+@media screen and (max-width: 830px) {
+
+    .contact--section {
+        padding: 100px 50px;
+        flex-direction: column;
+
+        .text-h2 {
+            font-size: 35px;
+        }
+
+        .contact--form--container, .contact--container {
+            width: 100%;
+
+            .text-md {
+                font-size: 15px;
+            }
+        }
+    }
+}

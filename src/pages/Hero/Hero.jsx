@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { getImageUrl } from "../../utils";
-import "../scss/Hero.scss";
+import "./Hero.scss";
+// import '../scss/Hero.scss';
 
 export const Hero = () => {
     return (

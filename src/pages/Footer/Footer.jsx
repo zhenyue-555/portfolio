@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
-import "../scss/Footer.scss";
+import "./Footer.scss";
+// import '../scss/Footer.scss';
 import { getImageUrl } from "../../utils";
 import { socialLinks } from "../../data/moment.json";
 

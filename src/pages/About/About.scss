@@ -1,0 +1,93 @@
+@import '../../App.scss';
+
+
+.about--section {
+    position: relative;
+    background-color: rgba(12, 12, 12, 0.6);
+    border-radius: 15px;
+    padding: 73px;
+    margin-top: 129px;
+    z-index: 1;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    .about--title {
+        color: $color-text;
+        @include text-styles(35px, 700, 1.75px, uppercase);
+    }
+
+    .about--content {
+        .aboutImage {
+            width: 100%;
+          }
+
+        .aboutItems {
+        color: $color-text;
+        gap: 50px;
+        list-style: none;
+        padding: 0%;
+
+        .aboutItem {
+            display: flex;
+            align-items: center;
+            border-radius: 20px;
+            list-style: none;
+            padding: 25px;
+            background-image: linear-gradient(
+                90deg,
+                rgba(165, 215, 232, 0.42) 0%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            background-size: 0 100%;
+            background-repeat: no-repeat;
+            transition: 0.4s;
+        
+            &:hover {
+                background-size: 100% 100%;
+            }
+
+        .aboutItemText{
+            .about-item-title {
+                @include text-styles(25px, 600);
+                }
+            .about-item-description {
+            @include text-styles(25px);
+            }
+        }
+    }
+            
+
+            }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about--section {
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 50px;
+
+        .about--title {
+            @include text-styles(20px, 700, 1.75px, uppercase);
+        }
+
+        .about--content {
+            flex-direction: column;
+
+            .aboutItems {
+                margin-top: 29px;
+                .aboutItem {
+                    padding: 15px;
+                    .aboutItemText{
+                        .about-item-title {
+                            @include text-styles(18px, 600);
+                          }
+                        .about-item-description {
+                        @include text-styles(15px);
+                        }
+                    }
+                }
+              }
+          }
+      }
+    }
