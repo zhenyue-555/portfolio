@@ -1,4 +1,9 @@
-$color-text: #fff;
+// $color-text: #fff;
+:root {
+  --color-text: #fff;
+}
+$color-text-day: #000000;
+$color-text-night: #ffffff;
 $color-primary: #576cbc;
 $color-secondary: #19376d;
 $color-dark: #0b2447;
@@ -35,4 +40,33 @@ $font-roboto: "Roboto";
   @if $weight != null { font-weight: $weight; }
   @if $spacing != null { letter-spacing: $spacing; }
   @if $transform != null { text-transform: $transform; }
+}
+
+.App.day-mode {
+  background-color: $color-primary;
+
+  --color-text: #000000;
+
+  .primary-accent {
+      color: $color-primary;
+  }
+
+  .secondary-accent {
+      color: $color-secondary;
+  }
+}
+
+// Night Mode Styles
+.App.night-mode {
+  background-color: $color-bg;
+
+  --color-text: #ffffff;
+
+  .primary-accent {
+      color: lighten($color-primary, 10%);
+  }
+
+  .secondary-accent {
+      color: lighten($color-secondary, 10%);
+  }
 }

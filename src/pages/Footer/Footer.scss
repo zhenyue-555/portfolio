@@ -2,7 +2,8 @@
 // @import '../scss/global.scss';
 
 .footer--section {
-    color: $color-text;
+    // color: $color-text;
+    color: var(--color-text);
     margin-top: 120px;
     background-color: $color-secondary;
     width: 100vw;
@@ -21,7 +22,8 @@
             text-align: center;
         
             a {
-                color: $color-text;
+                // color: $color-text;
+                color: var(--color-text);
                 text-decoration: none;
                 align-items: center;
                 display: flex;

@@ -7,14 +7,16 @@
 
     .hero--content {
         @include flexbox(column, null, flex-start);
-        color: $color-text;
+        // color: $color-text;
+        color: var(--color-text);
         z-index: 1;
 
         .hero--title {
             @include text-styles(70px, 900);
             margin-bottom: 33px;
             font-family: $font-roboto;
-            color: $color-text;
+            // color: $color-text;
+            color: var(--color-text);
             background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 120%);
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
@@ -29,7 +31,8 @@
         .contactBtn {
             text-decoration: none;
             background-color: $color-primary;
-            color: $color-text;
+            // color: $color-text;
+            color: var(--color-text);
             border-radius: 100px;
             @include text-styles(30px, 600);
             padding: 17px 26px;

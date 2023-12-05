@@ -12,7 +12,8 @@
     margin-right: 10%;
 
     .about--title {
-        color: $color-text;
+        // color: $color-text;
+        color: var(--color-text);
         @include text-styles(35px, 700, 1.75px, uppercase);
     }
 
@@ -22,7 +23,8 @@
           }
 
         .aboutItems {
-        color: $color-text;
+        // color: $color-text;
+        color: var(--color-text);
         gap: 50px;
         list-style: none;
         padding: 0%;
@@ -41,7 +43,15 @@
             background-size: 0 100%;
             background-repeat: no-repeat;
             transition: 0.4s;
-        
+
+            .about-icon {
+                width: 150px;
+                height: 150px;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: auto;
+            }
+
             &:hover {
                 background-size: 100% 100%;
             }

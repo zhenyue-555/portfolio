@@ -2,7 +2,8 @@
 
 .projects--section {
     margin-top: 76px;
-    color: $color-text;
+    // color: $color-text;
+    color: var(--color-text);
 
     .projects--title {
         @include text-styles(35px, 700, 1.75px, uppercase);

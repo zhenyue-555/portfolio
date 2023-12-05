@@ -1,13 +1,15 @@
 @import '../../App.scss';
 
 .experience--container {
-    color: $color-text;
+    // color: $color-text;
+    color: var(--color-text);
     margin-top: 79px;
     margin-left: 10%;
     margin-right: 10%;
 
     .experience--title {
-        color: $color-text;
+        // color: $color-text;
+        color: var(--color-text);
         @include text-styles(35px, 700, 1.75px, uppercase);
         margin-bottom: 25px;
         }

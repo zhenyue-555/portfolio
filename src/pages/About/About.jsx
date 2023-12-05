@@ -22,7 +22,7 @@ export const About = () => {
           <ul className="aboutItems">
             {aboutItems.map((item, index) => (
               <li className="aboutItem" key={index}>
-                <div className="d-none d-md-block d-lg-block">
+                <div className="about-icon d-none d-md-block d-lg-block">
                   <Image src={getImageUrl(`about/${item.icon}`)} alt={`${item.title} icon`} />
                 </div>
                 <div className="aboutItemText">

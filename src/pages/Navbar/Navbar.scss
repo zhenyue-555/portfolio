@@ -3,7 +3,8 @@
 .navbar--title {
     @include text-styles(30px, 600);
     text-decoration: none;
-    color: $color-text;
+    // color: $color-text;
+    color: var(--color-text);
 }
 
 .menuBtn {
@@ -17,7 +18,8 @@
 
     a {
         font-size: 25px;
-        color: $color-text;
+        // color: $color-text;
+        color: var(--color-text);
         text-decoration: none;
     }
     

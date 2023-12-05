@@ -12,13 +12,15 @@
 
         .projectcard--title {
         @include text-styles(25px, 700);
-        color: $color-text;
+        // color: $color-text;
+        color: var(--color-text);
     }
 
         .projectcard--description {
         margin-top: 6px;
         @include text-styles(25px, 400);
-        color: $color-text;
+        // color: $color-text;
+        color: var(--color-text);
     }
 
         .skills {
@@ -41,7 +43,8 @@
 
         .btn.link {
             text-decoration: none;
-            color: $color-text;
+            // color: $color-text;
+            color: var(--color-text);
             @include text-styles(20px, 600);
             border-radius: 100px;
             background: $color-primary;
@@ -63,13 +66,15 @@
     .projectcard--section {
         .projectcard--title {
             @include text-styles(20px, 700);
-            color: $color-text;
+            // color: $color-text;
+            color: var(--color-text);
         }
 
         .projectcard--description {
             margin-top: 6px;
             @include text-styles(15px, 400);
-            color: $color-text;
+            // color: $color-text;
+            color: var(--color-text);
         }
         .skills {
             .skill {
