@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
-import { projects } from "../../data/moment.json";
+import { projects } from "./Projects.json";
 import { ProjectCard } from "./ProjectCard";
 import "./Projects.scss";
 // import "../scss/Projects.scss";

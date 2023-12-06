@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import {projects} from "../../data/moment.json";
+import { projects } from "./Projects.json";
 import { getImageUrl } from "../../utils";
 import "./ProjectPage.scss";
 // import "../scss/ProjectPage.scss";

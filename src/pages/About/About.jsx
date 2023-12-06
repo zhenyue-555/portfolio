@@ -3,7 +3,7 @@ import "./About.scss";
 // import '../scss/About.scss';
 import { getImageUrl } from "../../utils";
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import {aboutItems} from "../../data/moment.json";
+import {aboutItems} from "./About.json";
 
 export const About = () => {
 

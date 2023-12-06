@@ -1,0 +1,19 @@
+{
+    "aboutItems":  [
+    {
+      "icon": "cursorIcon.png",
+      "title": "Front End Skills",
+      "description": "HTML/CSS, React, JavaScript, Responsive Web Design"
+    },
+    {
+      "icon": "serverIcon.png",
+      "title": "Back End Skills",
+      "description": "Node.js, MySQL, MongoDB, API development, Docker, AWS"
+    },
+    {
+      "icon": "uiIcon.png",
+      "title": "UI Designer",
+      "description": "Adobe Creative Suite, Figma"
+    }
+  ]
+}

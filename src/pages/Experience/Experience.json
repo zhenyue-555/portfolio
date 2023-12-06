@@ -1,0 +1,53 @@
+{
+    "skills": [
+        {
+            "title": "HTML",
+            "imageSrc": "skills/html.png"
+        },
+        {
+            "title": "CSS",
+            "imageSrc": "skills/css.png"
+        },
+        {
+            "title": "React",
+            "imageSrc": "skills/react.png"
+        },
+        {
+            "title": "Node",
+            "imageSrc": "skills/node.png"
+        },
+        {
+            "title": "MongoDB",
+            "imageSrc": "skills/mongodb.png"
+        },
+        {
+            "title": "Figma",
+            "imageSrc": "skills/figma.png"
+        }
+    ],
+
+    "history": [
+        {
+            "role": "software developer Intern",
+            "organisation": "Jobster",
+            "startDate": "Sep, 2023",
+            "endDate": "present",
+            "experiences": [
+                "Designed and implemented features",
+                "Built a set of Restful APIs"
+            ],
+            "imageSrc": "history/jobster.png"
+        },
+        {
+            "role": "web developer",
+            "organisation": "University of Toronto",
+            "startDate": "Sep, 2022",
+            "endDate": "Apr, 2023",
+            "experiences": [
+                "Worked on Education platform",
+                "improved query performance by 20%"
+            ],
+            "imageSrc": "history/uoft.png"
+        }
+    ]
+}

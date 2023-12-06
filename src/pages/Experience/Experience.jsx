@@ -1,6 +1,6 @@
 import React from "react";
 import { getImageUrl } from "../../utils";
-import { history, skills } from "../../data/moment.json";
+import { history, skills } from "./Experience.json";
 import "./Experience.scss";
 // import "../scss/Experience.scss";
 import { Container, Row, Col, Image } from 'react-bootstrap';

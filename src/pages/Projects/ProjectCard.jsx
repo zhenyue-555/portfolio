@@ -2,20 +2,24 @@ import React from "react";
 import { getImageUrl } from "../../utils";
 import { Card, Button, Badge } from 'react-bootstrap';
 import "./ProjectCard.scss";
+import { useNavigate } from 'react-router-dom';
 // import "../scss/ProjectCard.scss";
 
 export const ProjectCard = ({ project }) => {
     const { title, imageSrc, description, skills, demo, github, details } = project;
-
+    const navigate = useNavigate();
     const generateLinkButtons = () => {
         const links = [
             { url: demo, label: 'Demo' },
             { url: github, label: 'Github' },
-            { url: details, label: 'Details', onClick: () => window.open(`/projects/${title}`) }
+            { url: details, label: 'Details', onClick: () => navigate(`/projects/${title}`) }
         ];
-
+    
         return links.filter(link => link.url).map((link, index) => (
-            <Button key={index} className="link" href={link.url} target="_blank" onClick={link.onClick}>
+            <Button key={index} className="link" href={link.url} target="_blank" onClick={link.onClick ? (e) => {
+                e.preventDefault();
+                link.onClick();
+            } : null}>
                 {link.label}
             </Button>
         ));
