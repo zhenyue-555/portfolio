@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './pages/Home';
 import ProjectPage from './pages/Projects/ProjectPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import Switch from 'react-switch';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 function App() {
   const [isDayMode, setIsDayMode] = useState(true);
@@ -15,16 +16,21 @@ function App() {
 
   return (
     <div className={`App ${isDayMode ? 'day-mode' : 'night-mode'}`}>
-      <Button onClick={toggleMode}>Toggle Mode</Button>
+      <Switch
+        onChange={toggleMode}
+        checked={isDayMode}
+        uncheckedIcon={<FaMoon />}
+        checkedIcon={<FaSun />}
+      />
       <Router>
         <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects/:title" element={<ProjectPage />} />
-        </Routes>
-      </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects/:title" element={<ProjectPage />} />
+          </Routes>
+        </div>
       </Router>
-   </div>
+    </div>
   );
 }
 

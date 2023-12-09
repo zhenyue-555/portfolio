@@ -7,7 +7,8 @@
             "skills": [
                 "React",
                 "Express",
-                "Node"
+                "Node",
+                "Redux"
             ],
             "demo": "https://www.youtube.com/watch?v=eH0JqqH5bBw",
             "github": "https://github.com/zhenyue-555/shoppingplatform",

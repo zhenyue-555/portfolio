@@ -16,26 +16,37 @@
     gap: 47px;
     list-style: none;
 
-    a {
-        font-size: 25px;
-        // color: $color-text;
-        color: var(--color-text);
-        text-decoration: none;
+    li {
+        a {
+          font-size: 25px;
+          // color: $color-text;
+          color: var(--color-text);
+          text-decoration: none;
+        //   margin: 0 0.7vw 0.2rem 0.7vw;
+          &:hover {
+            color: $white;
+          }
+        }
+    
+        position: relative;
+    
+        a::before {
+          content: "";
+          display: block;
+          height: 3px;
+          width: 0%;
+          background-color: $white;
+          position: absolute;
+          transition: all ease-in-out 250ms;
+          margin: 0 0 0 10%;
+        }
+    
+        a:hover::before {
+          width: 80%;
+        }
+      }
     }
     
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .navbar--title {
-      @include text-styles(25px, 600);
-    }
-    .menuItems {
-      gap: 40px;
-      a {
-          font-size: 20px;
-      }
-  }
-  }
 
 @media screen and (max-width: 767px) {
     .navbar--title {

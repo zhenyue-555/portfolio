@@ -62,10 +62,15 @@ function Todo() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const newTask = { text, completed: false };
+        if (taskText.trim() === "") {
+            alert("Please enter a task.");
+            return;
+        }
+        const newTask = { text: taskText, completed: false };
         push(ref(database, 'todos'), newTask);
-        setText("");
+        setTaskText("");
     };
+    
 
     const toggleTaskCompletion = (id) => {
         const task = tasks.find(task => task.id === id);
@@ -127,7 +132,7 @@ function Todo() {
             <Row className="todo-row justify-content-center align-items-center">
                 <Col xs={12} md={8} className="shadow p-3 bg-white">
                     <h5 className="text-center text-primary">Todo List</h5>
-                    <Form onSubmit={(e) => { e.preventDefault(); setTaskText(""); }}>
+                    <Form onSubmit={submitHandler}>
                         <Row className="align-items-center">
                             <Col xs={9}>
                                 <Form.Control

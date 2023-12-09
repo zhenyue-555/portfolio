@@ -15,8 +15,13 @@
         // color: $color-text;
         color: var(--color-text);
         @include text-styles(35px, 700, 1.75px, uppercase);
+        cursor: pointer;
+        transition: text-shadow 0.3s ease-in-out;
+        &:hover {
+        text-shadow: $text-shadow;
+        }
     }
-
+        
     .about--content {
         .aboutImage {
             width: 100%;

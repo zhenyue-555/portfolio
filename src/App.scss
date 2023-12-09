@@ -18,6 +18,15 @@ $white: #ffffff;
 $background-color: #0078ff;
 $font-roboto: "Roboto";
 
+$text-shadow: 0 1px 0 hsl(174, 5%, 80%), 0 2px 0 hsl(174, 5%, 75%),
+0 3px 0 hsl(174, 5%, 70%), 0 4px 0 hsl(174, 5%, 66%),
+0 5px 0 hsl(174, 5%, 64%), 0 6px 0 hsl(174, 5%, 62%),
+0 7px 0 hsl(174, 5%, 61%), 0 8px 0 hsl(174, 5%, 60%),
+0 0 5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.2),
+0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2),
+0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.3);
+
+
 .App {
     background-color: $color-bg;
     width: 100%;
@@ -41,6 +50,7 @@ $font-roboto: "Roboto";
   @if $spacing != null { letter-spacing: $spacing; }
   @if $transform != null { text-transform: $transform; }
 }
+
 
 .App.day-mode {
   background-color: $color-primary;

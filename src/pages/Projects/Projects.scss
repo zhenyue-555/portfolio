@@ -8,6 +8,11 @@
     .projects--title {
         @include text-styles(35px, 700, 1.75px, uppercase);
         margin-bottom: 37px;
+        cursor: pointer;
+        transition: text-shadow 0.3s ease-in-out;
+        &:hover {
+        text-shadow: $text-shadow;
+        }
         }
 
     .projects {
