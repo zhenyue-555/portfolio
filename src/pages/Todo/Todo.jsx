@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { database } from '../../firebase';
 import { ref, push, update, remove, onValue } from 'firebase/database';
-import { Container, Row, Col, Form, Button, ListGroup, InputGroup, Collapse, ListGroupItem } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, ListGroup, InputGroup, Collapse } from 'react-bootstrap';
 import './Todo.scss';
 // import '../scss/Todo.scss';
 
 function Todo() {
     const [taskText, setTaskText] = useState("");
     const [subtaskText, setSubtaskText] = useState("");
+    const [childText, setChildText] = useState("");
     const [tasks, setTasks] = useState([]);
     const [openComments, setOpenComments] = useState({});
     const [openSubtasks, setOpenSubtasks] = useState({});
+    const [openChildTasks, setOpenChildTasks] = useState({});
 
     const toggleComment = (id) => {
         setOpenComments(prevOpenComments => ({
@@ -26,39 +28,15 @@ function Todo() {
         }));
     };
 
-    const addSubtask = (taskId, subtaskText) => {
-        const newSubtask = { text: subtaskText, completed: false };
-        const updatedTasks = tasks.map(task => {
-            if (task.id === taskId) {
-                const newSubtasks = task.subtasks ? [...task.subtasks, newSubtask] : [newSubtask];
-                return { ...task, subtasks: newSubtasks };
+    const toggleChildTaskVisibility = (taskId, subtaskId) => {
+        setOpenChildTasks(prevOpenChildTasks => ({
+            ...prevOpenChildTasks,
+            [taskId]: {
+                ...prevOpenChildTasks[taskId],
+                [subtaskId]: !prevOpenChildTasks[taskId]?.[subtaskId]
             }
-            return task;
-        });
-        setTasks(updatedTasks);
-        
-        const taskToUpdate = tasks.find(task => task.id === taskId);
-        update(ref(database, `todos/${taskId}`), { ...taskToUpdate, subtasks: taskToUpdate.subtasks ? [...taskToUpdate.subtasks, newSubtask] : [newSubtask] });
-        setSubtaskText("");
+        }));
     };
-
-
-    
-    const handleCommentChange = (id, newComment) => {
-        const updatedTasks = tasks.map(task => {
-            if (task.id === id) {
-                return { ...task, comment: newComment };
-            }
-            return task;
-        });
-        setTasks(updatedTasks);
-        update(ref(database, `todos/${id}`), { comment: newComment });
-    };
-
-
-    // const changeText = (e) => {
-    //     setText(e.target.value);
-    // };
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -70,6 +48,60 @@ function Todo() {
         push(ref(database, 'todos'), newTask);
         setTaskText("");
     };
+
+    const addSubtask = (taskId, subtaskText) => {
+        const newSubtask = { id: Date.now().toString(), text: subtaskText, completed: false };
+        const updatedTasks = tasks.map(task => {
+            if (task.id === taskId) {
+                const newSubtasks = task.subtasks ? [...task.subtasks, newSubtask] : [newSubtask];
+                return { ...task, subtasks: newSubtasks };
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+        const taskToUpdate = tasks.find(task => task.id === taskId);
+        update(ref(database, `todos/${taskId}`), { ...taskToUpdate, subtasks: taskToUpdate.subtasks ? [...taskToUpdate.subtasks, newSubtask] : [newSubtask] });
+        setSubtaskText("");
+    };
+
+    const addChildTask = (taskId, subtaskId, childTaskText) => {
+        console.log("Adding child task:", taskId, subtaskId, childTaskText);
+        const newChildTask = { text: childTaskText, completed: false };
+        const updatedTasks = tasks.map(task => {
+            if (task.id === taskId) {
+                return {
+                    ...task,
+                    subtasks: task.subtasks.map(subtask => {
+                        if (subtask.id === subtaskId) {
+                            const updatedChildTasks = subtask.childTasks ? [...subtask.childTasks, newChildTask] : [newChildTask];
+                            return { ...subtask, childTasks: updatedChildTasks };
+                        }
+                        return subtask;
+                    })
+                };
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+
+        const taskToUpdate = updatedTasks.find(task => task.id === taskId);
+        if (taskToUpdate) {
+            update(ref(database, `todos/${taskId}`), taskToUpdate);
+        }
+
+        setChildText("");
+    };
+    
+    const handleCommentChange = (id, newComment) => {
+        const updatedTasks = tasks.map(task => {
+            if (task.id === id) {
+                return { ...task, comment: newComment };
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+        update(ref(database, `todos/${id}`), { comment: newComment });
+    };
     
 
     const toggleTaskCompletion = (id) => {
@@ -78,15 +110,47 @@ function Todo() {
     };
     
     const toggleSubtaskCompletion = (taskId, subtaskIndex) => {
+        console.log("Toggling subtask completion:", taskId, subtaskIndex);
         const updatedTasks = tasks.map(task => {
             if (task.id === taskId) {
-                const newSubtasks = task.subtasks.map((subtask, index) => {
-                    if (index === subtaskIndex) {
+                console.log("Found task to update:", task);
+                const newSubtasks = task.subtasks.map((subtask) => {
+                    if (subtask.id === subtaskIndex) {
+                        console.log("Found subtask to update:", subtask);
                         return { ...subtask, completed: !subtask.completed };
                     }
                     return subtask;
                 });
                 return { ...task, subtasks: newSubtasks };
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+
+        const taskToUpdate = updatedTasks.find(task => task.id === taskId);
+        update(ref(database, `todos/${taskId}`), { ...taskToUpdate });
+    };
+
+    const toggleChildTaskCompletion = (taskId, subtaskId, childTaskIndex) => {
+        const updatedTasks = tasks.map(task => {
+            if (task.id === taskId) {
+                return {
+                    ...task,
+                    subtasks: task.subtasks.map((subtask, index) => {
+                        if (subtask.id === subtaskId) {
+                            return {
+                                ...subtask,
+                                childTasks: subtask.childTasks.map((childTask, idx) => {
+                                    if (idx === childTaskIndex) {
+                                        return { ...childTask, completed: !childTask.completed };
+                                    }
+                                    return childTask;
+                                })
+                            };
+                        }
+                        return subtask;
+                    })
+                };
             }
             return task;
         });
@@ -103,7 +167,7 @@ function Todo() {
     const deleteSubtask = (taskId, subtaskIndex) => {
         const updatedTasks = tasks.map(task => {
             if (task.id === taskId) {
-                const newSubtasks = task.subtasks.filter((_, index) => index !== subtaskIndex);
+                const newSubtasks = task.subtasks.filter(subtask => subtask.id !== subtaskIndex);;
                 return { ...task, subtasks: newSubtasks };
             }
             return task;
@@ -113,6 +177,29 @@ function Todo() {
         const taskToUpdate = updatedTasks.find(task => task.id === taskId);
         update(ref(database, `todos/${taskId}`), { ...taskToUpdate });
     };
+
+    const deleteChildTask = (taskId, subtaskId, childTaskIndex) => {
+        const updatedTasks = tasks.map(task => {
+            if (task.id === taskId) {
+                return {
+                    ...task,
+                    subtasks: task.subtasks.map((subtask, index) => {
+                        if (subtask.id === subtaskId) {
+                            const filteredChildTasks = subtask.childTasks.filter((_, idx) => idx !== childTaskIndex);
+                            return { ...subtask, childTasks: filteredChildTasks };
+                    }
+                    return subtask;
+                })
+            };
+        }
+        return task;
+    }
+    );
+        setTasks(updatedTasks);
+
+        const taskToUpdate = updatedTasks.find(task => task.id === taskId);
+        update(ref(database, `todos/${taskId}`), { ...taskToUpdate });
+};
     
     useEffect(() => {
         const todoRef = ref(database, 'todos');
@@ -201,14 +288,15 @@ function Todo() {
                             </div>
                         </Collapse>
                         <Collapse in={openSubtasks[task.id]}>
-                                    <div id={`subtask-collapse-${task.id}`}>
-                                    <ListGroup>
-                                    {task.subtasks && task.subtasks.map((subtask, index) => (
-                                        <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center">
+                            <div id={`subtask-collapse-${task.id}`}>
+                                <ListGroup>
+                                    {task.subtasks && task.subtasks.map((subtask)=> (
+                                        <>
+                                        <ListGroup.Item key={subtask.id} className="sub-task d-flex justify-content-between align-items-center">
                                             <InputGroup className="flex-grow-1">
                                                 <InputGroup.Checkbox
                                                     checked={subtask.completed}
-                                                    onChange={() => toggleSubtaskCompletion(task.id, index)}
+                                                    onChange={() => toggleSubtaskCompletion(task.id, subtask.id)}
                                                 />
                                                 <div className="task-text-container">
                                                     <div className="task-text" style={{ textDecoration: subtask.completed ? 'line-through' : 'none' }}>
@@ -216,10 +304,59 @@ function Todo() {
                                                     </div>
                                                 </div>
                                             </InputGroup>
-                                            <Button variant="danger" size="sm" onClick={() => deleteSubtask(task.id, index)}>Delete</Button>
+                                            <Button
+                                                size="sm"
+                                                variant="secondary"
+                                                onClick={() => toggleChildTaskVisibility(task.id, subtask.id)}
+                                                aria-controls={`child-task-collapse-${task.id}-${subtask.id}`}
+                                                aria-expanded={openChildTasks[task.id]?.[subtask.id]}
+                                            >
+                                                ChildTasks
+                                            </Button>
+                                            <Button variant="danger" size="sm" onClick={() => deleteSubtask(task.id, subtask.id)}>DeleteS</Button>
                                         </ListGroup.Item>
-                                    ))}
-                                </ListGroup>
+
+                                            <Collapse in={openChildTasks[task.id]?.[subtask.id]}>
+                                            <div id={`child-task-collapse-${task.id}-${subtask.id}`}>
+                                                <ListGroup>
+                                                {subtask.childTasks && subtask.childTasks.map((childTask, childIndex) => (
+
+                                                    <ListGroup.Item key={childIndex} className="child-task d-flex justify-content-between align-items-center">
+                                                    <InputGroup className="flex-grow-1">
+                                                        <InputGroup.Checkbox
+                                                            checked={childTask.completed}
+                                                            onChange={() => toggleChildTaskCompletion(task.id, subtask.id, childIndex)}
+                                                        />
+                                                        <div className="task-text-container">
+                                                            <div className="task-text" style={{ textDecoration: childTask.completed ? 'line-through' : 'none' }}>
+                                                                {childTask.text}
+                                                            </div>
+                                                        </div>
+                                                    </InputGroup>
+                                                    <div className="button-group">
+                                                    <div className="task-actions">
+                                                        <Button variant="danger" size="sm" onClick={() => deleteChildTask(task.id, subtask.id, childIndex)}>DeleteC</Button>
+                                                    </div>
+                                                    </div>
+                                                </ListGroup.Item>
+                                                ))}
+                                                </ListGroup>
+                                                <Form onSubmit={(e) => { e.preventDefault(); addChildTask(task.id, subtask.id, childText); }}>
+                                                    <InputGroup className="mb-3">
+                                                        <Form.Control
+                                                            type="text"
+                                                            value={childText}
+                                                            onChange={(e) => setChildText(e.target.value)}
+                                                            placeholder="Add a new child task"
+                                                        />
+                                                        <Button variant="secondary" size="sm" type="submit">Add</Button>
+                                                    </InputGroup>
+                                                </Form>
+                                        </div>
+                                        </Collapse>
+                                    </>
+                                ))}
+                            </ListGroup>
                                         <Form onSubmit={(e) => { e.preventDefault(); addSubtask(task.id, subtaskText); }}>
                                             <InputGroup>
                                                 <Form.Control
@@ -228,7 +365,7 @@ function Todo() {
                                                     onChange={(e) => setSubtaskText(e.target.value)}
                                                     placeholder="Add a new subtask"
                                                 />
-                                                <Button type="submit" variant="primary" size="sm">Add</Button>
+                                                <Button type="submit" variant="info" size="sm">Add</Button>
                                             </InputGroup>
                                         </Form>
                                     </div>
