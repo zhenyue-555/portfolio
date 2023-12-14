@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { database } from '../../firebase';
+import { database } from '../../utils/firebase';
 import { ref, push, update, remove, onValue } from 'firebase/database';
 import { Container, Row, Col, Form, Button, ListGroup, InputGroup, Collapse } from 'react-bootstrap';
 import './Todo.scss';
+import ChildTaskItem from '../../components/Tasks/ChildTask';
+import SubTaskItem from '../../components/Tasks/SubTask';
+import TaskItem from '../../components/Tasks/Task';
+import AddForm from '../../components/Tasks/TaskAddForm/AddForm';
 // import '../scss/Todo.scss';
 
 function Todo() {
@@ -38,14 +42,15 @@ function Todo() {
         }));
     };
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        if (taskText.trim() === "") {
-            alert("Please enter a task.");
-            return;
-        }
+    const submitHandler = () => {
         const newTask = { text: taskText, completed: false };
-        push(ref(database, 'todos'), newTask);
+        const newTaskRef = push(ref(database, 'todos'));
+        newTask.id = newTaskRef.key;
+
+        const updatedTasks = [...tasks, newTask];
+        setTasks(updatedTasks);
+
+        update(ref(database, `todos/${newTask.id}`), newTask);
         setTaskText("");
     };
 
@@ -219,64 +224,23 @@ function Todo() {
             <Row className="todo-row justify-content-center align-items-center">
                 <Col xs={12} md={8} className="shadow p-3 bg-white">
                     <h5 className="text-center text-primary">Todo List</h5>
-                    <Form onSubmit={submitHandler}>
-                        <Row className="align-items-center">
-                            <Col xs={9}>
-                                <Form.Control
-                                    type="text"
-                                    value={taskText}
-                                    onChange={(e) => setTaskText(e.target.value)}
-                                    placeholder="Add a new task"
-                                />
-                            </Col>
-                            <Col xs={3}>
-                                <Button type="submit" variant="primary" size="sm">Add Todo</Button>
-                            </Col>
-                        </Row>
-                    </Form>
-
+                    <AddForm
+                        onSubmit={submitHandler}
+                        text={taskText}
+                        setText={setTaskText}
+                        placeholder="Add a new task"
+                    />
                     <ListGroup className="mt-3">
                     {tasks.map((task) => (
                         <>
-                        <ListGroup.Item key={task.id} className="todo-item d-flex justify-content-between align-items-center">
-                            <InputGroup className="flex-grow-1">
-                                <InputGroup.Checkbox
-                                    checked={task.completed}
-                                    onChange={() => toggleTaskCompletion(task.id)}
-                                />
-                                <div className="task-text-container">
-                                    <div className="task-text" style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-                                        {task.text}
-                                    </div>
-                                </div>
-                            </InputGroup>
-                            <div className="button-group">
-                            <div className="task-actions">
-                                <Button variant="danger" size="sm" onClick={() => removeTask(task.id)}>Remove</Button>
-                            </div>
-                            <div className="task-actions">
-                            <Button 
-                                    size="sm"
-                                    onClick={() => toggleComment(task.id)}
-                                    aria-controls={`comment-collapse-${task.id}`}
-                                    aria-expanded={openComments[task.id]}
-                                >
-                                    comment
-                            </Button>
-                            </div>
-                            <div className="task-actions">
-                                <Button
-                                    size="sm"
-                                    variant='info'
-                                    onClick={() => toggleSubtaskVisibility(task.id)}
-                                    aria-controls={`subtask-collapse-${task.id}`}
-                                    aria-expanded={openSubtasks[task.id]}
-                                >
-                                    Subtask
-                                </Button>
-                            </div>
-                            </div>
-                        </ListGroup.Item>
+                        <TaskItem
+                            key={task.id}
+                            task={task}
+                            toggleTaskCompletion={toggleTaskCompletion}
+                            removeTask={removeTask}
+                            toggleComment={toggleComment}
+                            toggleSubtaskVisibility={toggleSubtaskVisibility}
+                            />
                         <Collapse in={openComments[task.id]}>
                             <div id={`comment-collapse-${task.id}`} className="todo-comment">
                                 <Form.Control
@@ -292,84 +256,51 @@ function Todo() {
                                 <ListGroup>
                                     {task.subtasks && task.subtasks.map((subtask)=> (
                                         <>
-                                        <ListGroup.Item key={subtask.id} className="sub-task d-flex justify-content-between align-items-center">
-                                            <InputGroup className="flex-grow-1">
-                                                <InputGroup.Checkbox
-                                                    checked={subtask.completed}
-                                                    onChange={() => toggleSubtaskCompletion(task.id, subtask.id)}
-                                                />
-                                                <div className="task-text-container">
-                                                    <div className="task-text" style={{ textDecoration: subtask.completed ? 'line-through' : 'none' }}>
-                                                        {subtask.text}
-                                                    </div>
-                                                </div>
-                                            </InputGroup>
-                                            <Button
-                                                size="sm"
-                                                variant="secondary"
-                                                onClick={() => toggleChildTaskVisibility(task.id, subtask.id)}
-                                                aria-controls={`child-task-collapse-${task.id}-${subtask.id}`}
-                                                aria-expanded={openChildTasks[task.id]?.[subtask.id]}
-                                            >
-                                                ChildTasks
-                                            </Button>
-                                            <Button variant="danger" size="sm" onClick={() => deleteSubtask(task.id, subtask.id)}>DeleteS</Button>
-                                        </ListGroup.Item>
+                                        <SubTaskItem
+                                            key={subtask.id}
+                                            subtask={subtask}
+                                            taskId={task.id}
+                                            toggleSubtaskCompletion={toggleSubtaskCompletion}
+                                            deleteSubtask={deleteSubtask}
+                                            toggleChildTaskVisibility={toggleChildTaskVisibility}
+                                        />
 
                                             <Collapse in={openChildTasks[task.id]?.[subtask.id]}>
                                             <div id={`child-task-collapse-${task.id}-${subtask.id}`}>
                                                 <ListGroup>
                                                 {subtask.childTasks && subtask.childTasks.map((childTask, childIndex) => (
-
-                                                    <ListGroup.Item key={childIndex} className="child-task d-flex justify-content-between align-items-center">
-                                                    <InputGroup className="flex-grow-1">
-                                                        <InputGroup.Checkbox
-                                                            checked={childTask.completed}
-                                                            onChange={() => toggleChildTaskCompletion(task.id, subtask.id, childIndex)}
-                                                        />
-                                                        <div className="task-text-container">
-                                                            <div className="task-text" style={{ textDecoration: childTask.completed ? 'line-through' : 'none' }}>
-                                                                {childTask.text}
-                                                            </div>
-                                                        </div>
-                                                    </InputGroup>
-                                                    <div className="button-group">
-                                                    <div className="task-actions">
-                                                        <Button variant="danger" size="sm" onClick={() => deleteChildTask(task.id, subtask.id, childIndex)}>DeleteC</Button>
-                                                    </div>
-                                                    </div>
-                                                </ListGroup.Item>
+                                                    <ChildTaskItem
+                                                    key={childIndex}
+                                                    childTask={childTask}
+                                                    taskId={task.id}
+                                                    subtaskId={subtask.id}
+                                                    childIndex={childIndex}
+                                                    toggleChildTaskCompletion={toggleChildTaskCompletion}
+                                                    deleteChildTask={deleteChildTask}
+                                                    />
                                                 ))}
                                                 </ListGroup>
-                                                <Form onSubmit={(e) => { e.preventDefault(); addChildTask(task.id, subtask.id, childText); }}>
-                                                    <InputGroup className="mb-3">
-                                                        <Form.Control
-                                                            type="text"
-                                                            value={childText}
-                                                            onChange={(e) => setChildText(e.target.value)}
-                                                            placeholder="Add a new child task"
-                                                        />
-                                                        <Button variant="secondary" size="sm" type="submit">Add</Button>
-                                                    </InputGroup>
-                                                </Form>
+                                                <AddForm
+                                                onSubmit={() => addChildTask(task.id, subtask.id, childText)}
+                                                text={childText}
+                                                setText={setChildText}
+                                                placeholder="Add a new child task"
+                                                />
+
                                         </div>
                                         </Collapse>
                                     </>
                                 ))}
                             </ListGroup>
-                                        <Form onSubmit={(e) => { e.preventDefault(); addSubtask(task.id, subtaskText); }}>
-                                            <InputGroup>
-                                                <Form.Control
-                                                    type="text"
-                                                    value={subtaskText}
-                                                    onChange={(e) => setSubtaskText(e.target.value)}
-                                                    placeholder="Add a new subtask"
-                                                />
-                                                <Button type="submit" variant="info" size="sm">Add</Button>
-                                            </InputGroup>
-                                        </Form>
-                                    </div>
-                                </Collapse>
+                            <AddForm
+                                onSubmit={() => addSubtask(task.id, subtaskText)}
+                                text={subtaskText}
+                                setText={setSubtaskText}
+                                placeholder="Add a new subtask"
+                            />
+
+                                </div>
+                            </Collapse>
                         </>
                     ))}
             </ListGroup>

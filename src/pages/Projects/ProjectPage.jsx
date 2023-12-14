@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { projects } from "./Projects.json";
-import { getImageUrl } from "../../utils";
+import { getImageUrl } from "../../utils/imagepath";
 import "./ProjectPage.scss";
 // import "../scss/ProjectPage.scss";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { getImageUrl } from "../../utils";
+import { getImageUrl } from "../../utils/imagepath";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { aboutItems } from "./About.json";
 import "./About.scss";

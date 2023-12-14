@@ -1,5 +1,5 @@
 import React from "react";
-import { getImageUrl } from "../../utils";
+import { getImageUrl } from "../../utils/imagepath";
 import { Card, Button, Badge } from 'react-bootstrap';
 import "./ProjectCard.scss";
 import { useNavigate } from 'react-router-dom';

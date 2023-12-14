@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import "./Footer.scss";
 // import '../scss/Footer.scss';
-import { getImageUrl } from "../../utils";
+import { getImageUrl } from "../../utils/imagepath";
 import { socialLinks } from "./Footer.json";
 
 export const Footer = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import { getImageUrl } from "../../utils";
+import { getImageUrl } from "../../utils/imagepath";
 import "./Hero.scss";
 import { TypeAnimation } from 'react-type-animation';
 // import '../scss/Hero.scss';

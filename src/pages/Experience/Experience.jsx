@@ -1,5 +1,5 @@
 import React from "react";
-import { getImageUrl } from "../../utils";
+import { getImageUrl } from "../../utils/imagepath";
 import { history, skills } from "./Experience.json";
 import "./Experience.scss";
 // import "../scss/Experience.scss";
